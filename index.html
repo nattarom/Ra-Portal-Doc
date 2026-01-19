@@ -657,7 +657,7 @@ flowchart TD
             <h2>🗄️ Database Schema (ERD)</h2>
             <p>ระบบใช้ PostgreSQL ผ่าน Supabase แบ่งเป็น 2 กลุ่มหลัก</p>
 
-            <h3>Academic Tables</h3>
+            <h3>Academic Tables - Users & Subjects</h3>
             <div class="mermaid-container">
                 <pre class="mermaid">
 erDiagram
@@ -665,12 +665,15 @@ erDiagram
         uuid id PK
         text email UK
         text name
+        text username UK
+        text password_hash
         boolean is_super
     }
     
     teachers {
         uuid id PK
-        text email UK
+        text teacher_id UK
+        text email
         text name
         text homeroom
         jsonb teaching_slots
@@ -678,17 +681,18 @@ erDiagram
     }
     
     students {
-        uuid id PK
+        text id PK
         text student_id UK
-        text email
+        text email UK
         text name
         text class_room
         integer food_group
+        boolean is_mock
     }
     
     subjects {
         text id PK
-        text code
+        text code UK
         text name
         jsonb competencies
     }
@@ -696,49 +700,126 @@ erDiagram
     units {
         uuid id PK
         text name
+        text description
         text subject_id FK
-        uuid teacher_id FK
+        text teacher_id FK
         jsonb main_outputs
+        text objectives
+        text learning_outcomes
     }
     
     sub_outputs {
         uuid id PK
         text name
+        text description
         uuid unit_id FK
+        text main_output_id
         integer max_score
-        text[] assigned_class_rooms
+        date due_date
+        text[] competency_ids
         jsonb competency_criteria
+        text[] assigned_class_rooms
+        jsonb resources
     }
-    
+
+    subjects ||--o{ units : contains
+    units ||--o{ sub_outputs : has
+                </pre>
+            </div>
+
+            <h3>Academic Tables - Scores & Submissions</h3>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+erDiagram
     raw_scores {
         uuid id PK
         text student_id FK
         uuid sub_output_id FK
         numeric score
         text feedback
+        text teacher_id FK
+        timestamptz graded_at
     }
     
     competency_scores {
         uuid id PK
         text student_id FK
         uuid sub_output_id FK
+        text competency_id
         integer level
+        text teacher_id FK
         text ai_feedback
+        timestamptz graded_at
     }
     
     submissions {
         uuid id PK
         text student_id FK
         uuid sub_output_id FK
+        text subject_id FK
         text file_url
+        text file_name
         boolean graded
+        timestamptz submitted_at
+        timestamptz graded_at
     }
 
-    subjects ||--o{ units : contains
-    units ||--o{ sub_outputs : has
     sub_outputs ||--o{ raw_scores : "scores for"
     sub_outputs ||--o{ competency_scores : "evaluates"
     sub_outputs ||--o{ submissions : "receives"
+                </pre>
+            </div>
+
+            <h3>Academic Tables - Homeroom & System</h3>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+erDiagram
+    homeroom_logs {
+        uuid id PK
+        text student_id FK
+        text teacher_id FK
+        text class_room
+        jsonb scores
+        numeric score
+        timestamptz date
+    }
+    
+    food_logs {
+        uuid id PK
+        text student_id FK
+        text student_name
+        integer group_id
+        integer week
+        jsonb scores
+        numeric total_score
+        text class_room
+        timestamptz date
+    }
+    
+    notifications {
+        uuid id PK
+        text recipient_id FK
+        text type
+        text message
+        boolean read
+        text link
+        timestamptz created_at
+    }
+    
+    system_config {
+        text id PK
+        text current_term
+        text current_year
+        text role
+        text tone
+        text focus
+        boolean ai_enabled
+        text gemini_key
+    }
+
+    students ||--o{ homeroom_logs : "has logs"
+    students ||--o{ food_logs : "has food logs"
+    students ||--o{ notifications : "receives"
                 </pre>
             </div>
 
@@ -749,8 +830,12 @@ erDiagram
     pet_species {
         text id PK
         text name
+        text description
+        text base_emoji
         text rarity
+        text unlock_condition
         jsonb sprites
+        boolean is_active
     }
     
     student_pets {
@@ -762,22 +847,33 @@ erDiagram
         integer xp
         integer level
         integer happiness
+        integer hunger
+        integer energy
+        integer streak_days
         integer rebirth_count
+        timestamptz last_fed_at
+        timestamptz last_played_at
+        timestamptz hatched_at
+        jsonb accessories
     }
     
     badges {
         text id PK
         text name
+        text description
         text icon
         text category
         integer xp_reward
+        text rarity
+        jsonb unlock_condition
+        boolean is_active
     }
     
     student_badges {
         uuid id PK
         text student_id FK
         text badge_id FK
-        timestamp earned_at
+        timestamptz earned_at
     }
     
     teacher_rewards {
@@ -786,11 +882,24 @@ erDiagram
         text to_student_id FK
         text reward_type
         integer reward_value
+        text message
         boolean is_claimed
+        timestamptz created_at
+    }
+    
+    pet_activity_log {
+        uuid id PK
+        text student_id FK
+        text activity_type
+        integer xp_earned
+        text source
+        timestamptz created_at
     }
 
     pet_species ||--o{ student_pets : "species of"
     badges ||--o{ student_badges : "awarded as"
+    students ||--o{ teacher_rewards : "receives"
+    students ||--o{ pet_activity_log : "logs"
                 </pre>
             </div>
         </section>
