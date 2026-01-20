@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RA Portal - System Documentation v2</title>
+    <title>RA Portal - System Documentation </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -387,6 +387,37 @@
             <p class="subtitle">ระบบบริหารจัดการการเรียนการสอนและประเมินผลสมรรถนะ (Competency-based Assessment)
                 สำหรับโรงเรียนรุ่งอรุณ</p>
 
+            <!-- USER PERSONA - ใครได้ประโยชน์อะไร -->
+            <div class="card" style="margin-bottom: 1.5rem; border-left: 3px solid var(--secondary);">
+                <h3>👥 ใครใช้ระบบนี้ และได้ประโยชน์อะไร?</h3>
+                <div class="grid">
+                    <div style="padding: 1rem; background: rgba(239, 68, 68, 0.1); border-radius: 10px;">
+                        <h4 style="color: #f87171;">👔 ผู้ดูแลระบบ (Admin)</h4>
+                        <ul>
+                            <li>จัดการข้อมูลครู นักเรียน วิชา <strong>ได้ในที่เดียว</strong></li>
+                            <li>นำเข้าข้อมูลจำนวนมากผ่าน <strong>CSV Import</strong></li>
+                            <li>ตั้งค่า AI และดูสถิติรวม</li>
+                        </ul>
+                    </div>
+                    <div style="padding: 1rem; background: rgba(99, 102, 241, 0.1); border-radius: 10px;">
+                        <h4 style="color: #a5b4fc;">📚 ครูผู้สอน (Teacher)</h4>
+                        <ul>
+                            <li><strong>ประหยัดเวลา</strong> ลงคะแนนผ่านระบบ ไม่ต้องใช้กระดาษ</li>
+                            <li>AI ช่วยเขียน <strong>Feedback</strong> ให้นักเรียน</li>
+                            <li>บันทึกพฤติกรรม Homeroom และหน่วยอาหาร</li>
+                        </ul>
+                    </div>
+                    <div style="padding: 1rem; background: rgba(16, 185, 129, 0.1); border-radius: 10px;">
+                        <h4 style="color: #6ee7b7;">🎒 นักเรียน (Student)</h4>
+                        <ul>
+                            <li><strong>สนุกกับการเรียน</strong> ผ่านระบบสัตว์เลี้ยง</li>
+                            <li>ส่งงาน ดูคะแนน และติดตามความก้าวหน้า</li>
+                            <li>ได้ XP และ Badge จากการส่งงาน</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <div class="card">
                 <h3>🎯 Core Features</h3>
                 <div class="grid">
@@ -587,7 +618,7 @@ flowchart LR
     T1 --> |"ดูภาพรวม\nนักเรียน"| S1["รายชื่อ + คะแนน"]
     T2 --> |"ให้คะแนน\nรายชิ้นงาน"| S2["Raw Score\n+ Competency"]
     T3 --> |"จัดการ\nหน่วยการเรียนรู้"| S3["Units\n+ Sub-Outputs"]
-    T4 --> |"บันทึก\nพฤติกรรม"| S4["Homeroom Logs\n+ Food Logs"]
+    T4 --> |"บำเพ็ญ+อาหาร"| S4["Service Logs\n+ Food Logs"]
     T5 --> |"ดูคะแนน\nแบบตาราง"| S5["Grade Matrix"]
 
     style Teacher fill:#1e1e2e,stroke:#6366f1,color:#fff
@@ -624,7 +655,7 @@ flowchart LR
                     <span class="badge teacher">HomeroomTab</span>
                     <h4>🏠 Homeroom & Food Unit</h4>
                     <ul>
-                        <li>บันทึกพฤติกรรมรายวัน (Punctuality, Uniform, Participation)</li>
+                        <li>บำเพ็ญประโยชน์รายวัน (ตรงเวลา, ความสะอาด, เก็บอุปกรณ์)</li>
                         <li>ประเมินหน่วยอาหารรายสัปดาห์ (5 เกณฑ์)</li>
                         <li>กราฟเปรียบเทียบกลุ่ม</li>
                     </ul>
@@ -767,14 +798,158 @@ flowchart TD
                     </ul>
                 </div>
             </div>
+
+            <!-- Pet Evolution Visual -->
+            <div class="card" style="margin-top: 1.5rem;">
+                <h4>🐾 Pet Evolution - สายพันธุ์และการวิวัฒนาการ</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Pet จะเปลี่ยนรูปลักษณ์ตาม
+                    Level โดยเป็น Pixel Art Style สุดเท่!</p>
+
+                <!-- Species with Custom Sprites -->
+                <div class="grid" style="gap: 1rem;">
+                    <!-- Dog Evolution -->
+                    <div
+                        style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 10px; text-align: center;">
+                        <h4 style="margin-bottom: 0.5rem;">🐕 หมา (Dog)</h4>
+                        <div style="display: flex; justify-content: space-around; align-items: flex-end; gap: 0.5rem;">
+                            <div>
+                                <img src="frontend/public/sprites/dog_teen.png" alt="Dog Teen"
+                                    style="width: 60px; height: 60px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--text-muted);">Teen</div>
+                            </div>
+                            <div>
+                                <img src="frontend/public/sprites/dog_adult.png" alt="Dog Adult"
+                                    style="width: 70px; height: 70px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--text-muted);">Adult</div>
+                            </div>
+                            <div>
+                                <img src="frontend/public/sprites/dog_legend.png" alt="Dog Legend"
+                                    style="width: 80px; height: 80px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--accent);">Legend ⭐</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cat Evolution -->
+                    <div
+                        style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 10px; text-align: center;">
+                        <h4 style="margin-bottom: 0.5rem;">🐱 แมว (Cat)</h4>
+                        <div style="display: flex; justify-content: space-around; align-items: flex-end; gap: 0.5rem;">
+                            <div>
+                                <img src="frontend/public/sprites/cat_teen.png" alt="Cat Teen"
+                                    style="width: 60px; height: 60px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--text-muted);">Teen</div>
+                            </div>
+                            <div>
+                                <img src="frontend/public/sprites/cat_adult.png" alt="Cat Adult"
+                                    style="width: 70px; height: 70px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--text-muted);">Adult</div>
+                            </div>
+                            <div>
+                                <img src="frontend/public/sprites/cat_legend.png" alt="Cat Legend"
+                                    style="width: 80px; height: 80px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--accent);">Legend ⭐</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bunny Evolution -->
+                    <div
+                        style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 10px; text-align: center;">
+                        <h4 style="margin-bottom: 0.5rem;">🐰 กระต่าย (Bunny)</h4>
+                        <div style="display: flex; justify-content: space-around; align-items: flex-end; gap: 0.5rem;">
+                            <div>
+                                <img src="frontend/public/sprites/bunny_teen.png" alt="Bunny Teen"
+                                    style="width: 60px; height: 60px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--text-muted);">Teen</div>
+                            </div>
+                            <div>
+                                <img src="frontend/public/sprites/bunny_adult.png" alt="Bunny Adult"
+                                    style="width: 70px; height: 70px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--text-muted);">Adult</div>
+                            </div>
+                            <div>
+                                <img src="frontend/public/sprites/bunny_legend.png" alt="Bunny Legend"
+                                    style="width: 80px; height: 80px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--accent);">Legend ⭐</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Frog Evolution -->
+                    <div
+                        style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 10px; text-align: center;">
+                        <h4 style="margin-bottom: 0.5rem;">🐸 กบ (Frog) <span class="badge info"
+                                style="font-size:0.6rem">Rare</span></h4>
+                        <div style="display: flex; justify-content: space-around; align-items: flex-end; gap: 0.5rem;">
+                            <div>
+                                <img src="frontend/public/sprites/frog_teen.png" alt="Frog Teen"
+                                    style="width: 60px; height: 60px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--text-muted);">Teen</div>
+                            </div>
+                            <div>
+                                <img src="frontend/public/sprites/frog_adult.png" alt="Frog Adult"
+                                    style="width: 70px; height: 70px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--text-muted);">Adult</div>
+                            </div>
+                            <div>
+                                <img src="frontend/public/sprites/frog_legend.png" alt="Frog Legend"
+                                    style="width: 80px; height: 80px; object-fit: contain;">
+                                <div style="font-size: 0.7rem; color: var(--accent);">Legend ⭐</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="color: var(--secondary); font-size: 0.85rem; margin-top: 1rem; text-align: center;">
+                    🎮 <em>ทุกสายพันธุ์เริ่มจาก 🥚 Egg (Level 0) → เลือกสายพันธุ์เมื่อส่งงานครั้งแรก!</em>
+                </p>
+            </div>
         </section>
 
         <!-- DATABASE -->
         <section id="database">
             <h2>🗄️ Database Schema (ERD)</h2>
-            <p>ระบบใช้ PostgreSQL ผ่าน Supabase แบ่งเป็น 2 กลุ่มหลัก</p>
+            <p>ระบบใช้ PostgreSQL ผ่าน Supabase แบ่งเป็น 2 กลุ่มหลัก: <strong>Academic Tables</strong>
+                (จัดการข้อมูลการเรียนการสอน) และ <strong>Gamification Tables</strong> (ระบบสัตว์เลี้ยงและรางวัล)</p>
+
+            <!-- Glossary for non-technical audience -->
+            <div class="card" style="margin-bottom: 1.5rem; border-left: 3px solid var(--accent);">
+                <h4>📖 คำศัพท์เทคนิคที่ควรรู้</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+                    สำหรับผู้ที่ไม่คุ้นเคยกับฐานข้อมูล</p>
+                <div class="grid-2">
+                    <ul>
+                        <li><code>PK</code> = <strong>Primary Key</strong> - รหัสหลักที่ไม่ซ้ำกัน (เหมือนเลขบัตรประชาชน)
+                        </li>
+                        <li><code>FK</code> = <strong>Foreign Key</strong> - รหัสที่อ้างอิงถึงตารางอื่น (เชื่อมข้อมูล)
+                        </li>
+                        <li><code>UK</code> = <strong>Unique Key</strong> - ข้อมูลที่ห้ามซ้ำ (เช่น email)</li>
+                        <li><code>UUID</code> = รหัสอัตโนมัติแบบยาว 36 ตัวอักษร</li>
+                    </ul>
+                    <ul>
+                        <li><code>TEXT</code> = ข้อความ (ชื่อ, อีเมล)</li>
+                        <li><code>INTEGER</code> = ตัวเลขจำนวนเต็ม (Level, คะแนน)</li>
+                        <li><code>JSONB</code> = ข้อมูลซับซ้อน (รายการวิชา, ค่าหลายค่า)</li>
+                        <li><code>TIMESTAMPTZ</code> = วันเวลา (เมื่อไหร่ส่งงาน)</li>
+                    </ul>
+                </div>
+            </div>
 
             <h3>Academic Tables - Users & Subjects</h3>
+            <div class="card" style="margin-bottom: 1rem;">
+                <p><strong>📌 หน้าที่:</strong> เก็บข้อมูลผู้ใช้ทั้ง 3 บทบาท (Admin, Teacher, Student)
+                    และโครงสร้างหลักสูตร</p>
+                <ul>
+                    <li><strong>admins:</strong> ผู้ดูแลระบบ - จัดการข้อมูลหลักทั้งหมด</li>
+                    <li><strong>teachers:</strong> ครูผู้สอน - มี teaching_slots (วิชา+ห้องที่สอน) และ homeroom
+                        (ห้องที่ปรึกษา)</li>
+                    <li><strong>students:</strong> นักเรียน - ผูกกับห้องเรียนและกลุ่มอาหาร</li>
+                    <li><strong>subjects:</strong> รายวิชา - แต่ละวิชามี competencies (สมรรถนะ) ที่ต้องประเมิน</li>
+                    <li><strong>units:</strong> หน่วยการเรียนรู้ - ประกอบด้วย main_outputs (ชิ้นงานหลัก)</li>
+                    <li><strong>sub_outputs:</strong> ชิ้นงานย่อย - มี max_score, due_date และ assigned_class_rooms</li>
+                </ul>
+            </div>
             <div class="mermaid-container">
                 <pre class="mermaid">
 erDiagram
@@ -782,25 +957,27 @@ erDiagram
         uuid id PK
         text email UK
         text name
-        text username UK
-        text password_hash
+        text username
         boolean is_super
     }
     
     teachers {
         uuid id PK
-        text teacher_id UK
-        text email
+        text email UK
         text name
+        text nickname
         text homeroom
         jsonb teaching_slots
         text[] allowed_class
+        text phone
+        text type
+        boolean is_mock
     }
     
     students {
-        text id PK
+        uuid id PK
         text student_id UK
-        text email UK
+        text email
         text name
         text class_room
         integer food_group
@@ -809,7 +986,7 @@ erDiagram
     
     subjects {
         text id PK
-        text code UK
+        text code
         text name
         jsonb competencies
     }
@@ -819,10 +996,8 @@ erDiagram
         text name
         text description
         text subject_id FK
-        text teacher_id FK
+        uuid teacher_id FK
         jsonb main_outputs
-        text objectives
-        text learning_outcomes
     }
     
     sub_outputs {
@@ -837,6 +1012,7 @@ erDiagram
         jsonb competency_criteria
         text[] assigned_class_rooms
         jsonb resources
+        text submission_type
     }
 
     subjects ||--o{ units : contains
@@ -845,6 +1021,16 @@ erDiagram
             </div>
 
             <h3>Academic Tables - Scores & Submissions</h3>
+            <div class="card" style="margin-bottom: 1rem;">
+                <p><strong>📌 หน้าที่:</strong> เก็บผลการประเมินและงานที่นักเรียนส่ง</p>
+                <ul>
+                    <li><strong>raw_scores:</strong> คะแนนดิบ - คะแนนตัวเลขที่ครูให้ พร้อม feedback</li>
+                    <li><strong>competency_scores:</strong> คะแนนสมรรถนะ - ระดับ 1-4 ต่อสมรรถนะแต่ละตัว</li>
+                    <li><strong>submissions:</strong> งานที่ส่ง - ไฟล์/ข้อความที่นักเรียนส่ง รวม self_reflection</li>
+                </ul>
+                <p style="color: var(--accent); font-size: 0.85rem;">💡 <em>เมื่อครูให้คะแนน ระบบจะคำนวณ XP และอัปเดต
+                        Pet ของนักเรียนอัตโนมัติ</em></p>
+            </div>
             <div class="mermaid-container">
                 <pre class="mermaid">
 erDiagram
@@ -854,7 +1040,7 @@ erDiagram
         uuid sub_output_id FK
         numeric score
         text feedback
-        text teacher_id FK
+        uuid teacher_id FK
         timestamptz graded_at
     }
     
@@ -862,10 +1048,8 @@ erDiagram
         uuid id PK
         text student_id FK
         uuid sub_output_id FK
-        text competency_id
         integer level
-        text teacher_id FK
-        text ai_feedback
+        uuid teacher_id FK
         timestamptz graded_at
     }
     
@@ -876,6 +1060,8 @@ erDiagram
         text subject_id FK
         text file_url
         text file_name
+        text text_answer
+        text self_reflection
         boolean graded
         timestamptz submitted_at
         timestamptz graded_at
@@ -888,13 +1074,40 @@ erDiagram
             </div>
 
             <h3>Academic Tables - Homeroom & System</h3>
+            <div class="card" style="margin-bottom: 1rem;">
+                <p><strong>📌 หน้าที่:</strong> บันทึกกิจกรรมประจำวัน/สัปดาห์และการตั้งค่าระบบ</p>
+                <ul>
+                    <li><strong>homeroom_logs:</strong> บำเพ็ญประโยชน์ (Service Activities) รายวัน
+                        <ul style="margin-top: 0.25rem; font-size: 0.85rem;">
+                            <li>ตรงต่อเวลา (punctuality)</li>
+                            <li>ความสะอาด/เรียบร้อย (thoroughness)</li>
+                            <li>การเก็บอุปกรณ์ (toolCare)</li>
+                        </ul>
+                        <span style="color: var(--text-muted); font-size: 0.8rem;">คะแนน 1-3 (1=ปรับปรุง, 2=พอใช้,
+                            3=ดีมาก)</span>
+                    </li>
+                    <li><strong>food_logs:</strong> หน่วยอาหาร (Food Unit) รายสัปดาห์
+                        <ul style="margin-top: 0.25rem; font-size: 0.85rem;">
+                            <li>ความสะอาด (cleanliness)</li>
+                            <li>ความรับผิดชอบ (responsibility)</li>
+                            <li>การทำงานเป็นทีม (teamwork)</li>
+                            <li>มารยาท/ประณีต (etiquette)</li>
+                            <li>ความตรงต่อเวลา (punctuality)</li>
+                        </ul>
+                        <span style="color: var(--text-muted); font-size: 0.8rem;">คะแนน 1-3 ต่อเกณฑ์ รวม 15
+                            คะแนน</span>
+                    </li>
+                    <li><strong>notifications:</strong> การแจ้งเตือน - เมื่อมีงานใหม่ ครูให้คะแนน หรือได้รับ Badge</li>
+                    <li><strong>system_config:</strong> ค่าคงที่ระบบ - เทอม ปีการศึกษา</li>
+                </ul>
+            </div>
             <div class="mermaid-container">
                 <pre class="mermaid">
 erDiagram
     homeroom_logs {
         uuid id PK
         text student_id FK
-        text teacher_id FK
+        uuid teacher_id FK
         text class_room
         jsonb scores
         numeric score
@@ -927,11 +1140,6 @@ erDiagram
         text id PK
         text current_term
         text current_year
-        text role
-        text tone
-        text focus
-        boolean ai_enabled
-        text gemini_key
     }
 
     students ||--o{ homeroom_logs : "has logs"
@@ -941,6 +1149,23 @@ erDiagram
             </div>
 
             <h3>Gamification Tables</h3>
+            <div class="card" style="margin-bottom: 1rem;">
+                <p><strong>📌 หน้าที่:</strong> ระบบสร้างแรงจูงใจผ่านสัตว์เลี้ยงเสมือน</p>
+                <ul>
+                    <li><strong>pet_species:</strong> สายพันธุ์สัตว์ - 6 ชนิด (หมา, แมว, กระต่าย, หมี, นก, กบ)
+                        แต่ละชนิดมี sprites 5 ระยะ</li>
+                    <li><strong>student_pets:</strong> Pet ของนักเรียน - xp, level, stage, happiness, hunger, energy และ
+                        streak_days</li>
+                    <li><strong>badges:</strong> รายการ Badge - แบ่งเป็น 5 หมวด (general, streak, level, academic,
+                        special)</li>
+                    <li><strong>student_badges:</strong> Badge ที่นักเรียนได้รับ - ไม่ซ้ำกัน</li>
+                    <li><strong>teacher_rewards:</strong> รางวัลจากครู - XP Bonus, Pet Food, Special Badge</li>
+                    <li><strong>pet_activity_log:</strong> ประวัติกิจกรรม - feed, play, submit_work, level_up, evolve
+                    </li>
+                </ul>
+                <p style="color: var(--secondary); font-size: 0.85rem;">🎮 <em>Pet วิวัฒนาการตาม Level: Egg (0) → Baby
+                        (1-5) → Teen (6-10) → Adult (11-15) → Legend (16-20)</em></p>
+            </div>
             <div class="mermaid-container">
                 <pre class="mermaid">
 erDiagram
@@ -967,9 +1192,9 @@ erDiagram
         integer hunger
         integer energy
         integer streak_days
-        integer rebirth_count
         timestamptz last_fed_at
         timestamptz last_played_at
+        timestamptz last_activity_at
         timestamptz hatched_at
         jsonb accessories
     }
@@ -999,24 +1224,27 @@ erDiagram
         text to_student_id FK
         text reward_type
         integer reward_value
+        jsonb reward_data
         text message
         boolean is_claimed
+        timestamptz claimed_at
         timestamptz created_at
     }
     
     pet_activity_log {
         uuid id PK
         text student_id FK
+        uuid pet_id FK
         text activity_type
+        jsonb activity_data
         integer xp_earned
-        text source
         timestamptz created_at
     }
 
     pet_species ||--o{ student_pets : "species of"
     badges ||--o{ student_badges : "awarded as"
     students ||--o{ teacher_rewards : "receives"
-    students ||--o{ pet_activity_log : "logs"
+    student_pets ||--o{ pet_activity_log : "logs"
                 </pre>
             </div>
         </section>
